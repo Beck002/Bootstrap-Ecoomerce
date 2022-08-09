@@ -1,7 +1,7 @@
 import { catalogo } from "../data/catalogo";
 
-export const getCatalogoById = ( id ) => {
+export const getCatalogoById = ( id = 0 ) => {
 
-    return catalogo.filter( item => item.id === id)
+    return catalogo.find( item => item.id === id)
 
 }

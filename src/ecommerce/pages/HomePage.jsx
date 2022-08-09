@@ -11,12 +11,6 @@ export const HomePage = () => {
             <h1>HomePage</h1>
             <hr />
 
-            {
-                catalogo.map( item =>(
-                    <ItemList key={item.id} {...item}/>
-                ))
-            }
-    
         </>
     )
 }
