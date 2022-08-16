@@ -6,6 +6,8 @@ export const CartProvider = ({ children }) => {
 
   const [cartProducts, setCartProducts] = useState([])
   const [totalProducts, setTotalProducts] = useState(0)
+  const [quantitySelected, setQuantitySelected] = useState(0)
+
 
   const addProductToCart = ( product )=>{
     let isInCart = cartProducts.find( cartItem => cartItem.id === product.id)
@@ -29,7 +31,8 @@ export const CartProvider = ({ children }) => {
     addProductToCart,
     deleteProduct,
     clearCart,
-    totalProducts
+    totalProducts,
+    setQuantitySelected
   }
 
   return(

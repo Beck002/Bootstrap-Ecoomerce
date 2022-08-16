@@ -1,6 +1,10 @@
+import { useLocation } from "react-router-dom";
 import { ItemListContainer } from "../components"
 
 export const HombrePage = () => {
+
+
+
   return (
     <>
         <h1>Hombre</h1>

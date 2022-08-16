@@ -1,7 +1,11 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { ItemCounter } from './ItemCounter'
 
 export const ItemList = ({ imagenURL, nombre, precio, id }) => {
+   
+    const {pathname} = useLocation();
+
+    console.log(pathname)
 
     return (
         <div className="col animate__animated animate__fadeIn">
@@ -14,7 +18,13 @@ export const ItemList = ({ imagenURL, nombre, precio, id }) => {
                     <p className="card-text">descripcion</p>
 
                     <Link to={`/product/${id}`} className="btn btn-outline-dark m-1">Ver</Link>
-                    <ItemCounter />
+
+                    {
+                        (pathname === "/hombre" || "/mujer" || "/kids" ) 
+                            ? null
+                            : <ItemCounter />
+                    }
+                    
                 </div>
             </div>
 

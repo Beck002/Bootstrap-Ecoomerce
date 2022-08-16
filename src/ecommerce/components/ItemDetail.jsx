@@ -7,7 +7,6 @@ export const ItemDetail = ({ nombre, id, precio, marca, imagenURL, descripcion, 
 
     const [quantitySelected, setQuantitySelected] = useState(0)
 
-    
     return (
 
         <div className="row mt-5" > 
@@ -30,7 +29,9 @@ export const ItemDetail = ({ nombre, id, precio, marca, imagenURL, descripcion, 
                 <h5 className="mt-3"> Metodos de pago y mas </h5>
                 <p>{descripcion}</p>
                 <div className="grid gap-2 d-md-block">
+         
                     <ItemCounter  setQuantitySelected={setQuantitySelected} stock={stock} id={id}/>
+                    
                     { ( quantitySelected > 0  ) ? <Link to="/cart" className="btn m-1 btn-outline-primary">Terminar compra</Link> : null}
                 </div>
 

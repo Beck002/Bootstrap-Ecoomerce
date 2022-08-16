@@ -8,6 +8,9 @@ export const ItemCounter = ({ setQuantitySelected, stock, id }) => {
 
     const [counter, setCounter] = useState(0)
 
+
+    
+
     const incrementar = ()=>{
         if ( counter === stock) return; 
         setCounter( counter + 1)
