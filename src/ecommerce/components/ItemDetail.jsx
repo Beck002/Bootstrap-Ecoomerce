@@ -3,9 +3,17 @@ import { Link } from 'react-router-dom';
 import { ItemCounter } from "./ItemCounter"
 
 
-export const ItemDetail = ({ nombre, id, precio, marca, imagenURL, descripcion, stock}) => {
+export const ItemDetail = ({ nombre, id, precio, marca, imagenURL, descripcion, stock, cantidadSeleccionada}) => {
 
     const [quantitySelected, setQuantitySelected] = useState(0)
+
+    
+
+    const menosCantidad = ()=>{
+        if (quantitySelected === 0)  return;
+        setQuantitySelected(quantitySelected - 1)
+    }
+
 
     return (
 
@@ -30,10 +38,14 @@ export const ItemDetail = ({ nombre, id, precio, marca, imagenURL, descripcion, 
                 <p>{descripcion}</p>
                 <div className="grid gap-2 d-md-block">
          
-                    <ItemCounter  setQuantitySelected={setQuantitySelected} stock={stock} id={id}/>
+                    <ItemCounter  setQuantitySelected={setQuantitySelected} quantitySelected={quantitySelected} stock={stock} id={id}/>
                     
                     { ( quantitySelected > 0  ) ? <Link to="/cart" className="btn m-1 btn-outline-primary">Terminar compra</Link> : null}
                 </div>
+                <button className="btn btn-primary" onClick={menosCantidad}>menos cantidad total</button>
+                <p>Stock: {stock} | Cantidad: {quantitySelected}</p>
+                <p>total del producto: { quantitySelected * precio}</p>
+            
 
             </div>
 

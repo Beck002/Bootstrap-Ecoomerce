@@ -1,4 +1,4 @@
-import { Button, Modal, Typography, Box, CardContent, Card, CardActions, CardMedia, Link  } from "@mui/material"
+import { Button, Modal, Typography, Box, CardContent, Card, CardActions, CardMedia, Link, List, ListItem, ListSubheader, ListItemText   } from "@mui/material"
 import { useContext, useState } from "react"
 import { AiOutlineShoppingCart, AiFillDelete } from "react-icons/ai"
 import { Link as RouterLink } from "react-router-dom";
@@ -39,43 +39,64 @@ export const CartWidget = () => {
         aria-describedby="modal-modal-description"
         >
      
-        <Box sx={style}>
+        <Box>
             <Typography id="modal-modal-title" variant="h6" component="h2">
                 Productos del Carro: 
             </Typography>
-            {
-                cartProducts.map(product =>(
-                    <Card sx={{ maxWidth: 345, display: "flex", flexDirection: "colmun", marginBottom: "1rem"}} key={product.id}>
-                        <CardMedia
-                            component="img"
-                            height="240"
-                            width="100"
-                            image={product.imagenURL}
-                            alt={product.nombre}
-                        />
-                        <Box sx={{display: "flex", flexDirection: "column"}}>
-                            <CardContent>
-                                <Typography gutterBottom variant="h5" component="div">
-                                {product.nombre}
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                ${product.precio} 
-                                </Typography>
+            <List
+                sx={{
+                    width: '100%',
+                    maxWidth: 360,
+                    bgcolor: 'background.paper',
+                    position: 'relative',
+                    overflow: 'auto',
+                    maxHeight: 300,
+                    '& ul': { padding: 0 },
+                }}
+                subheader={<li />}
+            >
+                <ul>
+                    {
+                        cartProducts.map((product) => (
+                            <li key={product.id}>
+                                <ListItem>
+                                    <Card sx={{ maxWidth: 345, display: "flex", flexDirection: "colmun", marginBottom: "1rem"}} key={product.id}>
+                                        <CardMedia
+                                            component="img"
+                                            height="240"
+                                            width="100"
+                                            image={product.imagenURL}
+                                            alt={product.nombre}
+                                        />
+                                        <Box sx={{display: "flex", flexDirection: "column"}}>
+                                            <CardContent>
+                                                <Typography gutterBottom variant="h5" component="div">
+                                                {product.nombre}
+                                                </Typography>
+                                                <Typography variant="body2" color="text.secondary">
+                                                ${product.precio} 
+                                                </Typography>
+                                                
+                                            </CardContent>
+                                            <CardActions sx={{display: "flex"}}>
+                                                <Button sx={{color: "red"}} onClick={()=>deleteProduct(product)}><AiFillDelete style={{fontSize: "1.5rem"}}/></Button>
+                                            </CardActions>
+                                        </Box>
+                                    
+                                    </Card>
+                                </ListItem>
                                 
-                            </CardContent>
-                            <CardActions sx={{display: "flex"}}>
-                                <Button sx={{color: "red"}} onClick={()=>deleteProduct(product)}><AiFillDelete style={{fontSize: "1.5rem"}}/></Button>
-                            </CardActions>
-                        </Box>
-                      
-                    </Card>
-            
-            ))
-            }
-            <Button size="small"><Link to="/cart" component={RouterLink} onClick={handleClose} underline="none">Ver Todo</Link></Button>
+                            </li>
+                        ))
+                    }
+                </ul>
+                <Button size="small"><Link to="/cart" component={RouterLink}  onClick={handleClose} underline="none">Ver Todo</Link></Button>
+            </List>
+       
    
         </Box>
     </Modal>
+    <p style={{color: "white"}}>{cartProducts.length}</p>
     </>
     )
 }

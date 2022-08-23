@@ -48,7 +48,6 @@ export const NavBar = () => {
                     </NavLink>
 
                     <CartWidget/>
-
                 </div>
             </div>
         </nav>

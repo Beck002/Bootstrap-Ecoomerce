@@ -2,7 +2,7 @@ import { useContext, useState } from "react"
 import { CartContext } from "../context/cartContext"
 import { getCatalogoById } from "../helpers/getCatalogoById"
 
-export const ItemCounter = ({ setQuantitySelected, stock, id }) => {
+export const ItemCounter = ({ setQuantitySelected, stock, id, quantitySelected }) => {
   
     const { addProductToCart, cartProducts } = useContext( CartContext )
 
@@ -19,14 +19,11 @@ export const ItemCounter = ({ setQuantitySelected, stock, id }) => {
     const decrementar = ()=>{
         if( counter === 0 ) return;
         setCounter( counter - 1)
-        setQuantitySelected( counter -1 )
-        console.log(counter);
     }
 
     const onAdd = ()=>{
         addProductToCart(getCatalogoById(id))
-        setQuantitySelected(counter)
-        console.log(cartProducts)
+        setQuantitySelected((counter + quantitySelected <= stock) ? counter + quantitySelected : quantitySelected )
     }
 
 

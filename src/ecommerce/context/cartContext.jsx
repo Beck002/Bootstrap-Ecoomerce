@@ -32,7 +32,8 @@ export const CartProvider = ({ children }) => {
     deleteProduct,
     clearCart,
     totalProducts,
-    setQuantitySelected
+    setQuantitySelected,
+    quantitySelected
   }
 
   return(

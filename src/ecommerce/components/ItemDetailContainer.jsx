@@ -10,7 +10,7 @@ export const ItemDetailContainer = () => {
     const  { id } = useParams();
     const navigate = useNavigate();
 
-    const producto = getCatalogoById( JSON.parse( id ) )
+    const producto = getCatalogoById( id )
 
 
     const onNavigateBack = () => {
