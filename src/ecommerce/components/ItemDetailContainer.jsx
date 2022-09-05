@@ -1,27 +1,26 @@
-import { useMemo } from 'react';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
-import { getCatalogoById } from '../helpers/getCatalogoById';
+import { getFirebaseDataById } from '../helpersfirebase/getFirebaseDataById';
+// import { getFirebaseDataById } from '../helpersfirebase/getFirebaseDataById';
 import { ItemDetail } from './ItemDetail';
 
 
 export const ItemDetailContainer = () => {
 
 
-    const  { id } = useParams();
-    const navigate = useNavigate();
+  const  { id } = useParams();
+  const navigate = useNavigate();
 
-    const producto = getCatalogoById( id )
+  const item =  getFirebaseDataById(id)
 
 
-    const onNavigateBack = () => {
-      navigate(-1);
-    }
+  const onNavigateBack = () => {
+    navigate(-1);
+  }
 
-    if ( !producto) {
-        return <Navigate to="/" />
-    }
-        
-    return (
-        <ItemDetail onNavigateBack={ onNavigateBack } {...producto}/>
-    )
+      
+  return (
+  <>
+    {(item !== undefined) ? <ItemDetail onNavigateBack={ onNavigateBack } item={ item }/> : null}
+  </>
+  )
 }

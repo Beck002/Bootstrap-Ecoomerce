@@ -1,39 +1,47 @@
 import { useContext } from 'react';
 import { CartContext } from '../context/cartContext';
 import {  AiFillDelete } from "react-icons/ai"
+import { useForm } from '../hooks/useForm';
 
 
 
 export const CartPage = () => {
 
-  const {cartProducts, deleteProduct} = useContext(CartContext);
+  const { cartProducts, deleteProduct } = useContext( CartContext );
+
+
 
   return (
-        
-    <div className='row'>
-      {
-        cartProducts.map( product =>(
-          <div className="card mb-3 col" style={{maxWidth: "540px"}} key={product.id}>
+    <>
+    
+      <div className="row rows-cols-1 row-cols-sm-2  row-cols-md-3 row-cols-lg-4  g-3 align-items-center m-2">
+        {
+          cartProducts.map( product =>(
 
-            <div className="row g-0" key={product.id}>
-              <div className="col-md-4">
-                <img src={product.imagenURL} className="img-fluid rounded-start" alt={product.name}/>
-              </div>
-              <div className="col-md-8">
-                <div className="card-body">
-                  <h5 className="card-title">{product.name}</h5>
-                  <p className="card-text">{product.descripcion}</p>
-                  <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-                </div>
+            <div className="card m-2">
+              <img className="card-img-top" src={product.imagenURL} alt={product.nombre}/>
+              <div className="card-body">
+                <h5 className="card-title">{ product.nombre }</h5>
+                <p className="card-text"></p>
+                <p className="card-text">Precio: ${product.precio} | Cantidad: {product.counter}</p>
+                <p className="card-text">Total: ${product.precio * product.counter } </p>
                 <button className='btn btn-outline-danger' onClick={()=>deleteProduct(product)}><AiFillDelete style={{fontSize: "1.5rem"}}/></button>
-
               </div>
             </div>
-         </div>  
+            
 
-        ))
-      }
-    </div>
+          ))
+        }
+
+      </div>
+
+      <p>Cantiadad de Productos: {cartProducts.length} | Total: {}</p>
+
+    
+     
+
+    </>
+
       
      
     

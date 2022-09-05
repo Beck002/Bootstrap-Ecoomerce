@@ -12,6 +12,7 @@
     "@emotion/styled": "^11.10.0",
     "@mui/material": "^5.10.0",
     "firebase": "^9.9.3",
+    "query-string": "^7.1.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-icons": "^4.4.0",

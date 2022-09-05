@@ -1,25 +1,21 @@
 import { Link } from 'react-router-dom'
 
-export const ItemList = ({ imagenURL, nombre, precio, id }) => {
+export const ItemList = ( {item} ) => {
    
-
 
     return (
         <div className="col animate__animated animate__fadeIn">
             
             <div className="card" style={{width: "18rem"}}>
-                <img src={ imagenURL } className="card-img-top" alt={ nombre }/>
+                <img src={ item.imagenURL } className="card-img-top" alt={ item.nombre }/>
                 <div className="card-body">
-                    <h5 className="card-title">{ nombre }</h5>
-                    <h6>{precio}</h6>
-                    <p className="card-text">descripcion</p>
+                    <h5 className="card-title">{ item.nombre }</h5>
+                    <h6>${item.precio}</h6>
 
-                    <Link to={`/product/${id}`} className="btn btn-outline-dark m-1">Ver</Link>
+                    <Link to={`/product/${item.id}`} className="btn btn-outline-dark m-1">Ver</Link>
 
-                    
                 </div>
             </div>
-
           
         </div>
     )

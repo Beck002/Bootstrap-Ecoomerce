@@ -1,10 +1,14 @@
 import { ItemList } from "../components"
-import { catalogo } from "../data/catalogo"
+import { getAllProducts } from "../data/getProductsFirebase"
+import { getFirebaseDataById } from "../helpersfirebase/getFirebaseDataById";
+
 
 export const HomePage = () => {
-  
-    
+ 
+    const items = getAllProducts();
 
+    const itemsID = getFirebaseDataById()
+    
     return (
    
         <>
@@ -12,11 +16,11 @@ export const HomePage = () => {
             <hr />
             
             
-            <div className="row rows-cols-1 row-cols-sm-2  row-cols-md-3 row-cols-lg-4  g-3 align-items-center">
+            <div className="row rows-cols-1 row-cols-sm-2  row-cols-md-3 row-cols-lg-4  g-3 align-items-center m-3">
 
                 {
-                    catalogo.map( product => (
-                        <ItemList key={product.id} {...product}/>
+                    items.map( item => (
+                        <ItemList key={item.id} item={item}/>
                     ))
                 }
             </div> 

@@ -1,14 +1,15 @@
 import { ItemListContainer } from "../components"
 
 export const KidsPage = () => {
+  
   return (
   
-    <>
-        <h1>Kids</h1>
-        <hr />
+    <div className="m-3">
+      <h1>Kids</h1>
+      <hr />
 
-        <ItemListContainer genero="Kids"/>
+      <ItemListContainer genero="Kids"/>
     
-    </>
+    </div>
   )
 }
