@@ -21,8 +21,7 @@ const style = {
 export const CartWidget = () => {
 
 
-    const { cartProducts, deleteProduct, clearCart, totalProducts} = useContext(CartContext)
-
+    const { cartProducts, deleteProduct, totalAPagar} = useContext(CartContext)
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -99,11 +98,11 @@ export const CartWidget = () => {
                                                         </Typography>
 
                                                         <Typography variant="body2" color="text.secondary">
-                                                        Cantidad: {product.counter} 
+                                                        Cantidad: {product.cantidad} 
                                                         </Typography>
                                                         
                                                         <Typography variant="body2" color="text.secondary">
-                                                        Total: ${product.precio * product.counter} 
+                                                        Total: ${product.precio * product.cantidad} 
                                                         </Typography>
                                                         
                                                     </CardContent>
@@ -111,6 +110,7 @@ export const CartWidget = () => {
                                                     <CardActions sx={{display: "flex"}}>
                                                         <Button sx={{color: "red"}} onClick={()=>deleteProduct(product)}><AiFillDelete style={{fontSize: "1.5rem"}}/></Button>
                                                     </CardActions>
+
                                                 </Box>
                                             
                                             </Card>
@@ -120,6 +120,10 @@ export const CartWidget = () => {
                                     ))
                             }
                         </ul>
+                        <Typography variant="body2" color="text.secondary">
+                            Total: ${totalAPagar} 
+                        </Typography>
+                        
                         <Button size="small"><Link to="/cart" component={RouterLink}  onClick={handleClose} underline="none">Ver Todo</Link></Button>
                     </List>
             

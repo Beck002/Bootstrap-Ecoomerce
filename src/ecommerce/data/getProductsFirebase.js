@@ -13,7 +13,7 @@ export const getAllProducts = () =>{
 
         const productCollection = collection( db, 'productos')
         const productSnapshot   = await getDocs(productCollection)
-        const products         = productSnapshot.docs.map((doc)=>{
+        const products          = productSnapshot.docs.map((doc)=>{
             let product = doc.data()
             product.id  = doc.id
             return product; 

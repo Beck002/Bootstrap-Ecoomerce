@@ -3,7 +3,7 @@ import { CartContext } from "../context/cartContext"
 
 export const ItemCounter = ({ setQuantitySelected , item }) => {
   
-    const { addProductToCart, cartProducts } = useContext( CartContext )
+    const { addProductToCart } = useContext( CartContext )
 
     const [counter, setCounter] = useState(0)
 
@@ -20,8 +20,9 @@ export const ItemCounter = ({ setQuantitySelected , item }) => {
     }
         
     const onAdd = ()=>{
+        if(counter === 0 ) return;
         setQuantitySelected(counter)
-        addProductToCart({...item, counter } )
+        addProductToCart({...item, cantidad: counter } )
     }
 
 

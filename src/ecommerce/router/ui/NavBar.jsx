@@ -1,5 +1,4 @@
-import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { AiOutlineShoppingCart } from 'react-icons/ai'
+import { Link, NavLink } from 'react-router-dom';
 import { CartWidget } from './CartWidget';
 
 export const NavBar = () => {
@@ -42,12 +41,20 @@ export const NavBar = () => {
                     
                     <NavLink 
                         className={ ({isActive}) => `nav-item nav-link  ${ isActive ? 'active':'' }` }
-                        to="/search"
+                        to="/buscar"
                     >
-                        Search
+                        Buscar
                     </NavLink>
 
                     <CartWidget/>
+                             
+                    <NavLink 
+                        className={ ({isActive}) => `nav-item nav-link  ${ isActive ? 'active':'' }` }
+                        to="/cart"
+                    >
+                        ver carro
+                    </NavLink>
+
                 </div>
             </div>
         </nav>

@@ -1,13 +1,10 @@
 import { ItemList } from "../components"
 import { getAllProducts } from "../data/getProductsFirebase"
-import { getFirebaseDataById } from "../helpersfirebase/getFirebaseDataById";
 
 
 export const HomePage = () => {
  
     const items = getAllProducts();
-
-    const itemsID = getFirebaseDataById()
     
     return (
    

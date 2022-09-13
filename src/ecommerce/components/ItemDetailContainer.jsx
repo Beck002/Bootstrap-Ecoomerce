@@ -1,6 +1,5 @@
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { getFirebaseDataById } from '../helpersfirebase/getFirebaseDataById';
-// import { getFirebaseDataById } from '../helpersfirebase/getFirebaseDataById';
 import { ItemDetail } from './ItemDetail';
 
 
